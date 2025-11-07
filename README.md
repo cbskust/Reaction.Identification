@@ -6,28 +6,22 @@ In this repository, we provide the necessary toolkit for a statistical inference
 
 We provide R codes and example data.
 
-Example2.R : This file provides examples using R codes to estimate synthetic epidemic data with Sellke construction to utilize MCMC for SDS likelhood.
+TK_model.R : This file provides examples using R code to fit a multinomial regression model for the Togashi-Kaneko model and for Table 1 and Table S2 in the manuscript. 
 
-Example3.R : This file provides examples using R codes to estimate synthetic epidemic data with Sellke construction to utilize maximum likelihood and MCMC for Doob Gillespie method.
+HeatShock_model.R: This file provides examples using R code to fit a multinomial regression model for the Heat Shock Response model and for Table 2 and Table S8 in the manuscript. 
 
-WSU.csv: example data of H1N1 pandemic data from WSU. The original data only has daily counts of new infection. We modifed it to use SDS method.
+SIR_model.R : This file provides examples using R code to fit a multinomial regression model for the SIR model with demography, and for Table 3 and Table S13 in the manuscript. 
 
-Description for mainly used functions in the SDSMCMC package
+TK_model_Mutinomical_Case1.csv: example data of the synthetic Togasshi-Kaneko model with symmetric reaction rate (Case 1), including numbers of species and reaction type.
 
-Sellke(): This function generate synthetic epidemic data using Sellke construciotn in Algorithm 3.1.
+HeatShock_model_Mutinomical_Case1.csv: example data of the synthetic Heat Shock Response model Case 1, including the number of species and reaction type.
 
-SellkeToTrajectory(): This function converts epidemic data wih infection and removed time to SIR trajectory data with S(t), I(t), and R(t) at discrete time t
+SIR_model_Mutinomical.csv: example data of the synthetic SIR model, including numbers of three compartments: S, I, and R, and reaction type.
 
-SirMle(): This function calculates MLE using SIR empidemic data.
+Estimation_SIR_model.R: This file provides examples using R code to estimate the SIR model based on Bayesian multinomial logistic regression. The RAM (robust adopted Metropolis) algorithm is used for the MCMC simulation.   
 
-GillespieMCMC(): This function generates posterior samples of beta, gamma, and rho using MCMC based on Examce likelihood in subsection 4.1.
+COVID-19.csv: example data of COVID-19 outbreak in Seoul, South Korea from Oct. 17, 2020, to Jan. 24, 2021. However, this dataset is a synthetic dataset inspired by the COVID-19 outbreak in Seoul, using the procedure described in Algorithm S1.
 
-GaussianMCMC(): This function generates posterior samples of beta, gamma, and rho using MCMC based on Gaussian likelihood in subsection A.2.
-
-SdsMCMC(): This function conducts MCMC simuation using SDS likelihood in subsection 4.2 and Algorithm 5.1 and generate posterior samples of parameters from their posterior distribution.
-
-result(): This function produce a summary statistics table of posterior samples and fugures for MCMC diagnostics.
-
-Description for example files Example1.R: This file provides examples using R codes to estimate WSU H1N1 daeta using MCMC for SDS likelhood. This example used "WSU.csv" data file.
+SIR_logistic_function.R: this R code includes some functions to estimate the SIR model based on the logistic regression model. 
 
 
