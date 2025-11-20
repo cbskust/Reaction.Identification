@@ -26,6 +26,11 @@ model_data  = data.frame(row_strings = row_strings,
                          R = Case1$R
 )
 
-# The multi-category logistic regression model for TK model; For Table S14 
-fit <-vglm(y ~ S + I + R, family = multinomial(refLevel = 6), data = model_data)
+# correcting for log(0) 
+model_data$S=ifelse(model_data$S==0,0.00000001, model_data$S)
+model_data$I=ifelse(model_data$I==0,0.00000001, model_data$I)
+model_data$R=ifelse(model_data$R==0,0.00000001, model_data$R)
+
+# The multi-category logistic regression model for TK model; For Table S12 
+fit <-vglm(y ~ log(S) + log(I) + log(R), family = multinomial(refLevel = 6), data = model_data)
 summary(fit)
