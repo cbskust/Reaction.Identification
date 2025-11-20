@@ -28,8 +28,11 @@ model_data  = data.frame(y = y,
                          B = Case1$B
 )
 
+# correcting for log(0) 
+model_data$A=ifelse(model_data$A==0,0.00000001, model_data$A)
+model_data$B=ifelse(model_data$B==0,0.00000001, model_data$B)
 
 # The multi-category logistic regression model for TK model; For Table S2 
-fit <-vglm(y ~ A + B , family = multinomial(refLevel = 6), data = model_data)
+fit <-vglm(y ~ log(A) + log(B) , family = multinomial(refLevel = 6), data = model_data)
 summary(fit)
 
