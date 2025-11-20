@@ -30,8 +30,13 @@ model_data  = data.frame(
                          R1 = Case1$R1
 )
 
-# The multi-category logistic regression model for HSR model; For Table S8 
-fit <-vglm(y ~ P1 + P2 + R1 , family = multinomial(refLevel = 10), data = model_data)
+# correcting for log(0) 
+model_data$P1=ifelse(model_data$P1==0,0.00000001, model_data$P1)
+model_data$P2=ifelse(model_data$P2==0,0.00000001, model_data$P2)
+model_data$R1=ifelse(model_data$R1==0,0.00000001, model_data$R1)
+
+# The multi-category logistic regression model for HSR model; For Table S6 
+fit <-vglm(y ~ log(P1) + log(P2) + log(R1) , family = multinomial(refLevel = 10), data = model_data)
 summary(fit)
 
 
